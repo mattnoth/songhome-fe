@@ -100,6 +100,7 @@ function App() {
 								<SongDetails
 									history={routerProps.history}
 									match={routerProps.match}
+								
 								/>
 							)
 						}}

@@ -54,7 +54,7 @@ const SongDetails = ({ match }) => {
 
 			<Typography variant='p'>{song.lyrics}</Typography>
 
-            <SongComments song={song} setSong={setSong} /> 
+            <SongComments song={song} setSong={setSong} baseUrl={baseUrl} /> 
 		</>
 	)
 }
