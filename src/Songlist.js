@@ -50,7 +50,7 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 			<Grid container spacing={4} justify='center'>
 				{songlist.map((song) => (
 					<Grid item xs={12} sm={6} lg={4}>
-
+                        <NavLink to={'/song/' + song.id}>
 						<Card className={classes.root}>
 							<div className={classes.details}>
 								<CardContent className={classes.content}>
@@ -87,6 +87,8 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 								title='Live from space album cover'
 							/>
 						</Card>
+
+                    </NavLink>
 
 						{/* <NavLink to={'/song/' + song.id}>
 							<Paper style={{ height: 200, width: '100%' }} variant='primary'>

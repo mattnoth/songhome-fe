@@ -3,6 +3,7 @@ import Axios from 'axios'
 import { Typography } from '@material-ui/core'
 
 import ReactPlayer from 'react-player'
+import SongComments from './SongComments'
 
 
 const SongDetails = ({ match }) => {
@@ -40,6 +41,8 @@ const SongDetails = ({ match }) => {
 	return (
 		<>
 			<Typography variant='h3'>{song.name}</Typography>
+			<Typography variant='h3'>Status: {song.status}</Typography>
+			<Typography variant='h3'>BPM: {song.bpm}</Typography>
 
 			<ReactPlayer
 				url={song.file}
@@ -49,7 +52,9 @@ const SongDetails = ({ match }) => {
 				controls={true}
 			/>
 
+			<Typography variant='p'>{song.lyrics}</Typography>
 
+            <SongComments song={song} setSong={setSong} /> 
 		</>
 	)
 }
