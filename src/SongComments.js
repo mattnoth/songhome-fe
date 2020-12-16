@@ -34,10 +34,28 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 					})
 					.catch(console.error)
 			})
-	}
+    }
+    
+    const handleDeleteComment = function (event, commentId) {
+            // const deleteUrl = `${commentsUrl}/`
+            
+            Axios.delete(deleteUrl)
+            
+				.then((response) => console.log(response))
+				.then(() => {
+					fetch()
+						.then((res) => res.json())
+						.then((res) => {
+							setSong(res)
+						})
+						.catch(console.error)
+				})
+		}
+
+
 
 	return (
-		<div>
+		<>
 			<form action='submit' onSubmit={handlePostComment}>
 				<input
 					type='text'
@@ -52,7 +70,40 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 					onChange={handleChange}
 				/>
 			</form>
-		</div>
+			<div className='comment-container'>
+				<div>
+					{song.comments?.map((comment) => {
+						return (
+							<div className='container' key={comment.id}>
+								<ul>
+
+
+									<li className='name'>
+										{comment.text}
+										<button
+											class=''
+											className=''
+											variant=''
+											onClick={(event) => {
+												handleDeleteComment(event, comment.id)
+											}}>
+                                                Delete
+											{/* <i class='fa fa-trash'></i> */}
+										</button>
+									</li>
+									<hr />
+									{/* <li>{comment.comment_body}</li> */}
+									{/* <li>{moment(comment.createdAt).fromNow()}</li> */}
+								</ul>
+							</div>
+						)
+					})}
+				</div>
+				<button  className='button-join' onClick={handleShow}>
+					Join the Babble!
+				</button>
+			</div>
+		</>
 	)
 }
 
