@@ -1,73 +1,65 @@
 import { Route } from 'react-router-dom';
-import React, { classes } from 'react'
+import React from 'react'
+import Navigation from './Navigation'
 import Songlist from './Songlist'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
+import Createsong from './Createsong'
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { orange } from '@material-ui/core/colors'
+
 
 import './App.css';
 
 
 function App() {
 
-  // app state, if false, in dev
+	const useStyles = makeStyles({
+		list: {
+			width: 250,
+		},
+		fullList: {
+			width: 'auto',
+		},
+	})
 
-    // const classes = useStyles()
-		// const [open, setOpen] = useState
-		// const handleDrawerOpen = () => {
-		// 	setOpen(true)
-		// }
-		// const handleDrawerClose = () => {
-		// 	setOpen(false)
-		// }
-
+	const theme = createMuiTheme({
+		palette: {
+			primary: {
+				main: orange[500]
+			}}
+	})
 
 
   return (
-		<div className='App'>
-			<header className='App-header'>
-				<AppBar
-					position='absolute'
-					className={clsx(classes.appBar, open && classes.appBarShift)}
-          
-          >
-					<Toolbar className={classes.toolbar}>
-						<IconButton
-							edge='start'
-							color='inherit'
-							aria-label='open drawer'
-							onClick={handleDrawerOpen}
-							className={clsx(
-								classes.menuButton,
-								open && classes.menuButtonHidden
-							)}>
-							<MenuIcon />
-						</IconButton>
-						<Typography
-							component='h1'
-							variant='h6'
-							color='inherit'
-							noWrap
-							className={classes.title}>
-							Dashboard
-						</Typography>
-						<IconButton color='inherit'>
-							<Badge badgeContent={4} color='secondary'>
-								<NotificationsIcon />
-							</Badge>
-						</IconButton>
-					</Toolbar>
-				</AppBar>
-			</header>
-			<main>
-				<Route
-					path='/'
-					render={(routerProps) => {
-						return <Songlist match={routerProps.match} />
-					}}
-				/>
-			</main>
-		</div>
+		<ThemeProvider theme={theme}>
+			<div className='App'>
+				<header className='App-header'>
+					<Route
+						path='/'
+						render={(routerProps) => {
+							return (
+								<Navigation match={routerProps.match} useStyles={useStyles} />
+							)
+						}}
+					/>
+				</header>
+				<main>
+					<Route
+						path='/'
+						exact
+						render={(routerProps) => {
+							return <Songlist match={routerProps.match} />
+						}}
+					/>
+					<Route
+						path='/createsong'
+						exact
+						render={(routerProps) => {
+							return <Createsong match={routerProps.match} />
+						}}
+					/>
+				</main>
+			</div>
+		</ThemeProvider>
 	)
 }
 
