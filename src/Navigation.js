@@ -14,7 +14,6 @@ import Drawer from '@material-ui/core/Drawer'
 import { NavLink } from 'react-router-dom'
 
 const Navigation = ({ useStyles }) => {
-    
 	const classes = useStyles()
 	const [state, setState] = useState({
 		top: false,
@@ -43,10 +42,12 @@ const Navigation = ({ useStyles }) => {
 			onClick={toggleDrawer(anchor, false)}
 			onKeyDown={toggleDrawer(anchor, false)}>
 			<List>
-				<ListItem button onClick='' key='createsong'>
-					<ListItemIcon></ListItemIcon>
-					<ListItemText primary='hello' />
-				</ListItem>
+				<NavLink></NavLink>
+					<ListItem button onClick='' key='createsong'>
+						<ListItemIcon></ListItemIcon>
+						<ListItemText primary='hello' />
+					</ListItem>
+	
 			</List>
 			{/* <Divider /> */}
 		</div>
