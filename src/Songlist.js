@@ -6,10 +6,10 @@ import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
-const Songlist = ({ routerProps }) => {
+const Songlist = ({ routerProps, baseUrl }) => {
 	const [songlist, setSonglist] = useState([])
 
-	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
+
 	const songsUrl = `songs/`
 
 	useEffect(function () {
