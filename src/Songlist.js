@@ -50,18 +50,34 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 			<Grid container spacing={4} justify='center'>
 				{songlist.map((song) => (
 					<Grid item xs={12} sm={6} lg={4}>
-                        <NavLink to={'/song/' + song.id}>
-						<Card className={classes.root}>
-							<div className={classes.details}>
-								<CardContent className={classes.content}>
-									<Typography component='h5' variant='h5'>
-										{song.name}
-									</Typography>
-									<Typography variant='subtitle1' color='textSecondary'>
-										{song.status}
-									</Typography>
-								</CardContent>
-								<div className={classes.controls}>
+						<NavLink to={'/song/' + song.id}>
+							<Card>
+								<div className={classes.details}>
+									<CardContent>
+										<Typography component='h5' variant='h5'>
+											{song.name}
+										</Typography>
+										<Typography variant='subtitle1' color='textSecondary'>
+											{song.status}
+										</Typography>
+
+										<img src={song.image} className='image-paper' alt='' />
+
+										<CardMedia
+											className={classes.cover}
+											image={song.image}
+											title='Live from space album cover'
+										/>
+
+										<ReactPlayer
+											url={song.file}
+											width='400px'
+											height='50px'
+											playing={false}
+											controls={true}
+										/>
+									</CardContent>
+									{/* <div className={classes.controls}> */}
 									{/* <IconButton aria-label='previous'>
 										{theme.direction === 'rtl' ? (
 											<SkipNextIcon />
@@ -69,9 +85,10 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 											<SkipPreviousIcon />
 										)}
 									</IconButton> */}
-									<IconButton aria-label='play/pause'>
+
+									{/* <IconButton aria-label='play/pause'>
 										<PlayArrowIcon className={classes.playIcon} />
-									</IconButton>
+									</IconButton> */}
 									{/* <IconButton aria-label='next'>
 										{theme.direction === 'rtl' ? (
 											<SkipPreviousIcon />
@@ -79,16 +96,10 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 											<SkipNextIcon />
 										)}
 									</IconButton> */}
+									{/* </div> */}
 								</div>
-							</div>
-							<CardMedia
-								className={classes.cover}
-								image='/static/images/cards/live-from-space.jpg'
-								title='Live from space album cover'
-							/>
-						</Card>
-
-                    </NavLink>
+							</Card>
+						</NavLink>
 
 						{/* <NavLink to={'/song/' + song.id}>
 							<Paper style={{ height: 200, width: '100%' }} variant='primary'>
@@ -100,7 +111,7 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 									playing={false}
 									controls={true}
 								/>
-                                <img src={song.image} className='image-paper' alt=""/>
+                                
 							</Paper>
 						</NavLink> */}
 					</Grid>

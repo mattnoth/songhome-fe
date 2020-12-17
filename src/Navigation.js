@@ -42,13 +42,18 @@ const Navigation = ({ useStyles }) => {
 			onClick={toggleDrawer(anchor, false)}
 			onKeyDown={toggleDrawer(anchor, false)}>
 			<List>
-			
-					<ListItem button onClick='' key='createsong'>
-						<ListItemIcon></ListItemIcon>
-						<ListItemText primary='hello' />
-					</ListItem>
-			
-	
+				<ListItem button onClick='' key='createsong'>
+					<ListItemIcon></ListItemIcon>
+					<NavLink to='/'>
+						<ListItemText primary='Home' />
+					</NavLink>
+				</ListItem>
+				<ListItem button onClick='' key='createsong'>
+					<ListItemIcon></ListItemIcon>
+					<NavLink to='createsong/'>
+						<ListItemText primary='Create Song' />
+					</NavLink>
+				</ListItem>
 			</List>
 			{/* <Divider /> */}
 		</div>
@@ -62,9 +67,9 @@ const Navigation = ({ useStyles }) => {
 						<MenuIcon onClick={toggleDrawer('left', true)} />
 					</IconButton>
 					<Typography variant='h6'>Songhome</Typography>
-					<Button color='inherit' href='createsong/'>
+					{/* <Button color='inherit' href='createsong/'>
 						<Typography>Create Song</Typography>
-					</Button>
+					</Button> */}
 				</Toolbar>
 			</AppBar>
 			<Drawer

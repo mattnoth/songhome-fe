@@ -1,45 +1,50 @@
 import React, { useState } from 'react'
-
+import Typography from '@material-ui/core/Typography'
 import Axios from 'axios'
 
 const SongComments = ({ song, setSong, baseUrl }) => {
-	const songId = song.id
+    const songId = song.id
+    const song_name = song.name
 
-	const songUrl = `${baseUrl}songs/`
+	const songUrl = `${baseUrl}songs/${songId}`
 
 	const [formState, setFormState] = useState({
 		text: '',
-		song_name: '',
+		song_name: ''
 	})
 
 	const handleChange = (event, plant_id) => {
 		setFormState({
 			...formState,
 			[event.target.id]: event.target.value,
-			songId: songId,
+			song_name: song_name,
 		})
 	}
 
-	const handlePostComment = function () {
+	const handlePostComment = function (e) {
 		const data = formState
+        e.preventDefault()
 
-		Axios.post(songUrl, data)
-			.then((response) => console.log(response))
+        console.log(data)
 
-			.then(() => {
-				fetch()
-					.then((res) => res.json())
-					.then((res) => {
-						console.log(res)
-					})
-					.catch(console.error)
-			})
+
+		// Axios.post(songUrl, data)
+		// 	.then((response) => console.log(response))
+
+		// 	.then(() => {
+		// 		fetch()
+		// 			.then((res) => res.json())
+		// 			.then((res) => {
+		// 				console.log(res)
+		// 			})
+		// 			.catch(console.error)
+		// 	})
     }
     
     const handleDeleteComment = function (event, commentId) {
             // const deleteUrl = `${commentsUrl}/`
             
-            Axios.delete(deleteUrl)
+            Axios.delete()
             
 				.then((response) => console.log(response))
 				.then(() => {
@@ -57,18 +62,16 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 	return (
 		<>
 			<form action='submit' onSubmit={handlePostComment}>
-				<input
-					type='text'
-					id='song_name'
-					placeholder='Name'
-					onChange={handleChange}
-				/>
+                <Typography> Comment: </Typography>
 				<input
 					type='textarea'
 					id='text'
 					placeholder=''
 					onChange={handleChange}
 				/>
+                <button
+                type='submit'
+                >Post Comment</button>
 			</form>
 			<div className='comment-container'>
 				<div>
@@ -76,10 +79,8 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 						return (
 							<div className='container' key={comment.id}>
 								<ul>
-
-
 									<li className='name'>
-										{comment.text}
+										<Typography> {comment.text} </Typography>
 										<button
 											class=''
 											className=''
@@ -87,7 +88,7 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 											onClick={(event) => {
 												handleDeleteComment(event, comment.id)
 											}}>
-                                                Delete
+											Delete
 											{/* <i class='fa fa-trash'></i> */}
 										</button>
 									</li>
@@ -99,9 +100,7 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 						)
 					})}
 				</div>
-				<button  className='button-join' onClick={handleShow}>
-					Join the Babble!
-				</button>
+
 			</div>
 		</>
 	)

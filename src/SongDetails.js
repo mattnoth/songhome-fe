@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './App.css'
 import Axios from 'axios'
 import { Typography } from '@material-ui/core'
 
@@ -17,32 +18,25 @@ const SongDetails = ({ match }) => {
 	useEffect(function getSong() {
 		Axios(fetchUrl)
 			.then((data) => {
-				console.log(data)
+				// console.log(data)
 				setSong(data.data)
 			})
 			.catch((error) => {})
-	})
+	}, [fetchUrl])
 
 
 	if (!song) {
 		return <div> Loading ... </div>
     }
-    
-
-
-  
-
-
-
-
-
 
 
 	return (
 		<>
 			<Typography variant='h3'>{song.name}</Typography>
-			<Typography variant='h3'>Status: {song.status}</Typography>
-			<Typography variant='h3'>BPM: {song.bpm}</Typography>
+			<Typography variant='h5'>Status: {song.status}</Typography>
+			<Typography variant='h6'>BPM: {song.bpm}</Typography>
+			<Typography variant='h6'>Key: {song.key}</Typography> 
+            <img className='detail-cover' src={song.image} alt=""/>
 
 			<ReactPlayer
 				url={song.file}
@@ -54,7 +48,7 @@ const SongDetails = ({ match }) => {
 
 			<Typography variant='p'>{song.lyrics}</Typography>
 
-            <SongComments song={song} setSong={setSong} baseUrl={baseUrl} /> 
+			<SongComments song={song} setSong={setSong} baseUrl={baseUrl} />
 		</>
 	)
 }
