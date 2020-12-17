@@ -10,7 +10,7 @@ import SongComments from './SongComments'
 const SongDetails = ({ match }) => {
 
 	// const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
-	
+
 	const baseUrl = `http://localhost:8000/`
 	const [song, setSong] = useState({})
 
@@ -38,7 +38,7 @@ const SongDetails = ({ match }) => {
 			<Typography variant='h5'>Status: {song.status}</Typography>
 			<Typography variant='h6'>BPM: {song.bpm}</Typography>
 			<Typography variant='h6'>Key: {song.key}</Typography> 
-            <img className='detail-cover' src={song.image} alt=""/>
+            {/* <img className='detail-cover' src={song.image} alt=""/> */}
 
 			<ReactPlayer
 				url={song.file}

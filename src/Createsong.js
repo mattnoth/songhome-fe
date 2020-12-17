@@ -63,9 +63,6 @@ const Createsong = ({ baseUrl }) => {
 		})
 	}
 
-	
-
-
 	if (loading) {
 		return <div> uploading....... </div>
 	}

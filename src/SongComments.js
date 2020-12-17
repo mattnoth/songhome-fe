@@ -9,11 +9,12 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 
 	const songUrl = `${baseUrl}songs/${songId}`
 
+	const [taskStatus, setTaskStatus] = useState(false) 
 
 
 	// const commentUrl = `${baseUrl}comments/`
 
-	const commentUrl = `http://localhost:8000/comments`
+	const commentUrl = `http://localhost:8000/comments/`
 
 	const [formState, setFormState] = useState({
 		text: '',
@@ -76,10 +77,17 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 											{/* <i class='fa fa-trash'></i> */}
 										</button>
 									</li>
-									<hr />
+
+								
 									{/* <li>{comment.comment_body}</li> */}
 									<li>{moment(comment.created).fromNow()}</li>
 								</ul>
+								<form>
+									<input type='radio' id='status'></input>
+									{/* <input type="radio" id="male" name="gender" value="male">
+									<label for="male">Male</label>
+				 */}
+								</form>
 							</div>
 						)
 					})}
