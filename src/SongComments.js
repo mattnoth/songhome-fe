@@ -1,77 +1,61 @@
 import React, { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Axios from 'axios'
+import moment from 'moment'
 
 const SongComments = ({ song, setSong, baseUrl }) => {
-    const songId = song.id
-    const song_name = song.name
+	const songId = song.id
+	// const song_name = song.name
 
 	const songUrl = `${baseUrl}songs/${songId}`
 
+
+
+	// const commentUrl = `${baseUrl}comments/`
+
+	const commentUrl = `http://localhost:8000/comments`
+
 	const [formState, setFormState] = useState({
 		text: '',
-		song_name: ''
+		song: '',
 	})
 
 	const handleChange = (event, plant_id) => {
 		setFormState({
 			...formState,
 			[event.target.id]: event.target.value,
-			song_name: song_name,
+			song: song.id ,
 		})
 	}
 
 	const handlePostComment = function (e) {
 		const data = formState
-        e.preventDefault()
+		e.preventDefault()
 
-        console.log(data)
+		Axios.post(commentUrl, data)
+			.then((response) => console.log(response))
 
+	}
 
-		// Axios.post(songUrl, data)
-		// 	.then((response) => console.log(response))
-
-		// 	.then(() => {
-		// 		fetch()
-		// 			.then((res) => res.json())
-		// 			.then((res) => {
-		// 				console.log(res)
-		// 			})
-		// 			.catch(console.error)
-		// 	})
-    }
-    
-    const handleDeleteComment = function (event, commentId) {
-            // const deleteUrl = `${commentsUrl}/`
-            
-            Axios.delete()
-            
-				.then((response) => console.log(response))
-				.then(() => {
-					fetch()
-						.then((res) => res.json())
-						.then((res) => {
-							setSong(res)
-						})
-						.catch(console.error)
-				})
-		}
-
-
+	const handleDeleteComment = function (event, commentId) {
+	
+		console.log("hellow from hanlde dlete")
+		Axios.delete(`${commentUrl}/${commentId}`).then((response) => {
+			
+		})
+	}
 
 	return (
 		<>
 			<form action='submit' onSubmit={handlePostComment}>
-                <Typography> Comment: </Typography>
+				<Typography> Comment: </Typography>
 				<input
 					type='textarea'
 					id='text'
 					placeholder=''
 					onChange={handleChange}
 				/>
-                <button
-                type='submit'
-                >Post Comment</button>
+				<button type='submit'>Post Comment</button>
 			</form>
 			<div className='comment-container'>
 				<div>
@@ -94,13 +78,12 @@ const SongComments = ({ song, setSong, baseUrl }) => {
 									</li>
 									<hr />
 									{/* <li>{comment.comment_body}</li> */}
-									{/* <li>{moment(comment.createdAt).fromNow()}</li> */}
+									<li>{moment(comment.created).fromNow()}</li>
 								</ul>
 							</div>
 						)
 					})}
 				</div>
-
 			</div>
 		</>
 	)

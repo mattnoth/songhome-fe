@@ -9,7 +9,9 @@ import SongComments from './SongComments'
 
 const SongDetails = ({ match }) => {
 
-	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
+	// const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
+	
+	const baseUrl = `http://localhost:8000/`
 	const [song, setSong] = useState({})
 
 	const songId = match.params.id

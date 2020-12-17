@@ -14,7 +14,11 @@ import { orange } from '@material-ui/core/colors'
 import './App.css'
 
 function App() {
-	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
+
+
+	// const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
+
+	const baseUrl = `http://localhost:8000/`
 
 	const useStyles = makeStyles((theme) => ({
 		root: {

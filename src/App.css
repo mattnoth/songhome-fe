@@ -42,6 +42,12 @@
   
 }
 
+.dropzone-container {
+  background-color: lightblue;
+
+
+}
+
 
 @keyframes App-logo-spin {
   from {
