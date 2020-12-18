@@ -1,0 +1,20 @@
+.status-card { 
+    background-color: red;
+}
+
+
+.detail-cover { 
+  height: 200px;
+  width: 200px;
+  
+}
+
+.dropzone-container {
+  background-color: lightblue;
+  height: 50px;
+
+}
+
+.dropzone-p {
+  width: 50vw;
+}

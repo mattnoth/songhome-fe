@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
@@ -50,12 +50,12 @@ const Navigation = ({ useStyles }) => {
 				</ListItem>
 				<ListItem button onClick='' key='createsong'>
 					<ListItemIcon></ListItemIcon>
-					<NavLink to='createsong/'>
+					<NavLink to='/createsong/'>
 						<ListItemText primary='Create Song' />
 					</NavLink>
 				</ListItem>
 			</List>
-			{/* <Divider /> */}
+	
 		</div>
 	)
 
@@ -66,10 +66,7 @@ const Navigation = ({ useStyles }) => {
 					<IconButton edge='start' className color='inherit' aria-label='menu'>
 						<MenuIcon onClick={toggleDrawer('left', true)} />
 					</IconButton>
-					<Typography variant='h6'>Songhome</Typography>
-					{/* <Button color='inherit' href='createsong/'>
-						<Typography>Create Song</Typography>
-					</Button> */}
+					<Typography variant='h6'>Music Lab</Typography>
 				</Toolbar>
 			</AppBar>
 			<Drawer

@@ -1,9 +1,9 @@
 import { Route } from 'react-router-dom'
 import React from 'react'
-import Navigation from './Navigation'
-import Songlist from './Songlist'
-import Createsong from './Createsong'
-import SongDetails from './SongDetails'
+import Navigation from './Components/Navigation'
+import Songlist from './Components/Songlist'
+import Createsong from './Components/Createsong'
+import SongDash from './Components/SongDash'
 import {
 	makeStyles,
 	ThemeProvider,
@@ -14,6 +14,7 @@ import { orange } from '@material-ui/core/colors'
 import './App.css'
 
 function App() {
+
 
 
 	// const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
@@ -101,7 +102,7 @@ function App() {
 						path='/song/:id'
 						render={(routerProps) => {
 							return (
-								<SongDetails
+								<SongDash
 									history={routerProps.history}
 									match={routerProps.match}
 								
