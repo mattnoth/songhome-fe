@@ -66,7 +66,7 @@ const Navigation = ({ useStyles }) => {
 					<IconButton edge='start' className color='inherit' aria-label='menu'>
 						<MenuIcon onClick={toggleDrawer('left', true)} />
 					</IconButton>
-					<Typography variant='h6'>Music Lab</Typography>
+					<Typography variant='h6'>Beatbay</Typography>
 				</Toolbar>
 			</AppBar>
 			<Drawer
