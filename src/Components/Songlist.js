@@ -17,15 +17,24 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 	const classes = useStyles()
 	const [songlist, setSonglist] = useState([])
 	const songsUrl = `songs/`
+	
+	const [loading, setLoading] = useState(true)
 
 	useEffect(function () {
 		Axios(baseUrl + songsUrl)
 			.then((data) => {
-				console.log(data)
 				setSonglist(data.data)
+				setLoading(false)
 			})
 			.catch(console.error)
 	}, [])
+
+	if (loading) {
+		return (
+			<div>loading....</div>
+		)
+
+	}
 
 	return (
 		<>
@@ -39,9 +48,23 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 								<Card>
 									<div className={classes.details}>
 										<CardContent>
-											<Typography component='h5' variant='h5'>
+											<Typography
+												component='h5'
+												variant='h5'
+												style={{
+													display: 'inline',
+												}}>
 												{song.name}
 											</Typography>
+
+											{song.comments.length ? (
+												<Typography>
+													{song.comments.length} unfinished tasks{' '}
+												</Typography>
+											) : <Typography> No Tasks reported. </Typography>}
+
+									
+
 											<Typography variant='subtitle1' color='textSecondary'>
 												{song.status}
 											</Typography>

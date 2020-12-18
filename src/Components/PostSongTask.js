@@ -5,7 +5,9 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 const PostSongTask = ({ song, getSong }) => {
-    const commentUrl = `http://localhost:8000/comments/`
+    // const commentUrl = `http://localhost:8000/comments/`
+
+    const commentUrl = 'https://blooming-earth-00957.herokuapp.com/comments/'
 
     const initialFormState = {
 			text: '',
@@ -41,7 +43,8 @@ const PostSongTask = ({ song, getSong }) => {
 				onChange={handleChange}
 				style={{
 					width: '30vw',
-					position: 'bottom',
+                    position: 'bottom',
+            
 				}}
 			/>
 			<Button type='submit'>Post Task</Button>

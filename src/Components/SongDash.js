@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import DashboardGroupA from './DashboardGroupA'
+import SongStatus from './SongStatus'
 import Edit from './Edit'
 import SongTasks from './SongTasks'
 import PostSongTask from './PostSongTask'
@@ -13,12 +13,17 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 
-import CardMedia from '@material-ui/core/CardMedia'
 
-import { blue, green, orange } from '@material-ui/core/colors'
+
+import { orange } from '@material-ui/core/colors'
 
 const SongDash = ({ match, history }) => {
-	const baseUrl = `http://localhost:8000/`
+
+	// const baseUrl = `http://localhost:8000/`
+
+	const baseUrl = 'https://blooming-earth-00957.herokuapp.com/'
+
+
 	const [song, setSong] = useState({})
 
 	const [editState, setEditState] = useState(false)
@@ -27,14 +32,6 @@ const SongDash = ({ match, history }) => {
 
 	const songId = match.params.id
 	const fetchUrl = `${baseUrl}songs/${songId}/`
-
-	// useEffect(function getSong() {
-	// 	Axios(fetchUrl)
-	// 		.then((data) => {
-	// 			setSong(data.data)
-	// 		})
-	// 		.catch((error) => {})
-	// }, [])
 
 	const getSong = () => {
 		 	Axios(fetchUrl)
@@ -48,8 +45,7 @@ const SongDash = ({ match, history }) => {
 
 	}, [])
 
-
-
+	
 	const editButton = (e) => {
 		e.preventDefault()
 		setEditState(true)
@@ -101,11 +97,13 @@ const SongDash = ({ match, history }) => {
 			<Grid container justify='space-between' col='10' spacing={6}>
 				<Grid item xs={12} sm={6} lg={6}>
 					<Card
+						square
 						style={{
 							backgroundColor: orange[100],
-							height: 350,
+							height: 200,
+							justify:'center'
 						}}>
-						<DashboardGroupA
+						<SongStatus
 							song={song}
 							editButton={editButton}
 							history={history}
@@ -122,6 +120,7 @@ const SongDash = ({ match, history }) => {
 						setComments={setComments}
 						getSong={getSong}
 					/>
+
 				</Grid>
 				<Grid item xs={12} sm={6} lg={6} justify='center' row>
 					<Card
@@ -138,14 +137,17 @@ const SongDash = ({ match, history }) => {
 
 				<Grid item xs={12} sm={6} lg={4}>
 					<Card
+						square
 						style={{
 							minHeight: 100,
+							backgroundColor: orange[100]
 						}}>
 						<PostSongTask
 							song={song}
 							comments={comments}
 							setComments={setComments}
 							getSong={getSong}
+						
 						/>
 					</Card>
 				</Grid>

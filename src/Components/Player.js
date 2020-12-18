@@ -1,7 +1,6 @@
 import React from 'react';
 
 import CardMedia from '@material-ui/core/CardMedia'
-import { orange } from '@material-ui/core/colors'
 import ReactPlayer from 'react-player'
 
 const Player = ({ song }) => {

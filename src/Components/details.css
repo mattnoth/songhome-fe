@@ -18,3 +18,8 @@
 .dropzone-p {
   width: 50vw;
 }
+
+.album {
+    height: 200px;
+    width: 200px;
+}

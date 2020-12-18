@@ -175,7 +175,9 @@ const Createsong = ({ baseUrl }) => {
 							<br />
 						</Grid>
 						<Grid item xs={12} sm={12} lg={12}>
-							<Button onClick={handleSubmit}> Submit </Button>
+							<Button type='submit'
+
+							> Submit </Button>
 						</Grid>
 					</form>
 				</Paper>

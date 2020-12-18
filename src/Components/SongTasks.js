@@ -16,10 +16,11 @@ const SongTasks = ({ song, setSong, baseUrl, comments, setComments, getSong }) =
 
 	// const [taskStatus, setTaskStatus] = useState(false)
 
-	const commentUrl = `http://localhost:8000/comments/`
+	// const commentUrl = `http://localhost:8000/comments/`
+	const commentUrl = `https://blooming-earth-00957.herokuapp.com/comments/`
 
 	const handleDeleteComment = function (event, commentId) {
-		console.log('hellow from hanlde dlete')
+
 		
 		Axios.delete(`${commentUrl}${commentId}`).then((response) => {
 			
@@ -36,6 +37,7 @@ const SongTasks = ({ song, setSong, baseUrl, comments, setComments, getSong }) =
 				{song.comments?.map((comment) => {
 					return (
 						<Card className='container'
+						square
 						style={{
 							backgroundColor: orange[100]
 						}} key={comment.id}>
