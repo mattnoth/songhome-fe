@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
 import Container from '@material-ui/core/Container'
-import Paper from '@material-ui/core/Paper'
+
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
@@ -10,11 +10,6 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow'
-import SkipNextIcon from '@material-ui/icons/SkipNext'
-
-import IconButton from '@material-ui/core/IconButton'
 
 import ReactPlayer from 'react-player'
 
@@ -22,19 +17,30 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 	const classes = useStyles()
 	const [songlist, setSonglist] = useState([])
 	const songsUrl = `songs/`
+	
+	const [loading, setLoading] = useState(true)
 
 	useEffect(function () {
 		Axios(baseUrl + songsUrl)
 			.then((data) => {
-				console.log(data)
 				setSonglist(data.data)
+				setLoading(false)
 			})
 			.catch(console.error)
 	}, [])
 
+	if (loading) {
+		return (
+			<div>loading....</div>
+		)
+
+	}
+
 	return (
 		<>
 			<Container maxWidth='lg'>
+				<Typography component='h1'>Song List </Typography>
+
 				<Grid container spacing={4} justify='center'>
 					{songlist.map((song) => (
 						<Grid item xs={12} sm={6} lg={4}>
@@ -42,9 +48,23 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 								<Card>
 									<div className={classes.details}>
 										<CardContent>
-											<Typography component='h5' variant='h5'>
+											<Typography
+												component='h5'
+												variant='h5'
+												style={{
+													display: 'inline',
+												}}>
 												{song.name}
 											</Typography>
+
+											{song.comments.length ? (
+												<Typography>
+													{song.comments.length} unfinished tasks{' '}
+												</Typography>
+											) : <Typography> No Tasks reported. </Typography>}
+
+									
+
 											<Typography variant='subtitle1' color='textSecondary'>
 												{song.status}
 											</Typography>
