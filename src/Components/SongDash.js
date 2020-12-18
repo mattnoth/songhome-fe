@@ -67,6 +67,7 @@ const SongDash = ({ match, history }) => {
 				fetchUrl={fetchUrl}
 				editState={editState}
 				setEditState={setEditState}
+				getSong={getSong}
 			/>
 		)
 	}

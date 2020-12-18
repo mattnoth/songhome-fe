@@ -10,7 +10,7 @@ import { yellow } from '@material-ui/core/colors'
 import TextField from '@material-ui/core/TextField'
 
 
-const Edit = ({ song, fetchUrl, setEditState }) => {
+const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 
 	const nametxt = 'Name: ' + String(song.name)
 	const statustxt = 'Status: ' + String(song.status)
@@ -25,6 +25,7 @@ const Edit = ({ song, fetchUrl, setEditState }) => {
         Axios.patch(fetchUrl, editFormState).then((response) => {
             console.log(response)
             setEditState(false)
+            getSong()
         })
 	}
 
