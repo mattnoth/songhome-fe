@@ -1,7 +1,9 @@
 
 # Description 
 
-Beatbay Alpha is the first version of a song specific task management web application. It should be used for listening ToDos on songs, storing song metadata, and storing other useful information about a track. It handles file uploads of audio and images. Main features include a status list of songs in a user's enviornment, and a dashboard for each song where users can edit information about a song and post notes / tasks about the song. Originally, the idea was a web-app for myself to manage my song / beat catalog. I wanted to be able to upload a song, attach meta data to it, listen to it. For works in progress, the ability to write notes attached the song (stretch goal is to have the note jump to a point in the song).
+Beatbay Alpha is the first version of a song specific task management web application. It should be used for listening ToDos on songs, storing song metadata, and storing other useful information about a track. It handles file uploads of audio and images. Main features include a status list of songs in a user's enviornment, and a dashboard for each song where users can edit information about a song and post notes / tasks about the song. Originally, the idea was a web-app for myself to manage my song / beat catalog. I wanted to be able to upload a song, attach meta data to it, listen to it. For works in progress, the ability to write notes attached the song (stretch goal is to have the note jump to a point in the song). 
+
+I also want to do a design overhaul to the dashbaord elements and grid. Time contraints in the initial 5 day sprint. 
 
 In order to use, one must assign their own S3 buckets and database in the backend repo. 
 
