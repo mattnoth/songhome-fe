@@ -7,7 +7,9 @@ I also want to do a design overhaul to the dashbaord elements and grid. Time con
 
 In order to use, one must assign their own S3 buckets and database in the backend repo. 
 
-BACKEND -- https://github.com/mattnoth/songhome-backend 
+BACKEND REPO -- https://github.com/mattnoth/songhome-backend
+Frontend Deployed - https://vast-dusk-53244.herokuapp.com/
+Backend Deployed - https://blooming-earth-00957.herokuapp.com/
 
 ## User Stories 
 
