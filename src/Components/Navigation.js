@@ -54,8 +54,14 @@ const Navigation = ({ useStyles }) => {
 						<ListItemText primary='Create Song' />
 					</NavLink>
 				</ListItem>
+				<ListItem button onClick='' key='song table'>
+					<ListItemIcon></ListItemIcon>
+					<NavLink to='/songtable/'>
+						<ListItemText primary='Song Table' />
+					</NavLink>
+				</ListItem>
 			</List>
-	
+
 		</div>
 	)
 

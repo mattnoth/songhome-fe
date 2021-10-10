@@ -4,6 +4,7 @@ import Navigation from './Components/Navigation'
 import Songlist from './Components/Songlist'
 import Createsong from './Components/Createsong'
 import SongDash from './Components/SongDash'
+import SongTable from './Components/SongTable'
 import {
 	makeStyles,
 	ThemeProvider,
@@ -14,6 +15,8 @@ import { orange } from '@material-ui/core/colors'
 import './App.css'
 
 function App() {
+
+
 
 
 
@@ -99,13 +102,21 @@ function App() {
 						}}
 					/>
 					<Route
+						path='/songtable'
+						exact
+						render={(routerProps) => {
+							return <SongTable match={routerProps.match} baseUrl={baseUrl} />
+						}}
+					/>
+					<Route
 						path='/song/:id'
 						render={(routerProps) => {
 							return (
 								<SongDash
 									history={routerProps.history}
 									match={routerProps.match}
-								
+
+
 								/>
 							)
 						}}
