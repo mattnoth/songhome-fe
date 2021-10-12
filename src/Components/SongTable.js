@@ -6,8 +6,8 @@ import { useTable } from "react-table";
 
 // import style from "./styles.css";
 
-function SongTable({ baseUrl }) {
 
+function SongTable({ baseUrl }) {
 
     const [songlist, setSonglist] = useState([])
     const songsUrl = `songs/`
@@ -24,11 +24,6 @@ function SongTable({ baseUrl }) {
             })
             .catch(console.error)
     }, [])
-
-
-
-
-
 
     const data = React.useMemo(
         () => {
@@ -56,8 +51,6 @@ function SongTable({ baseUrl }) {
     //         Header: songlist.
     //         accessor
     //     }
-
-
 
     const columns = React.useMemo(
         () => [

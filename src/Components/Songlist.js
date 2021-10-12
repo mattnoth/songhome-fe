@@ -2,22 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
 import Container from '@material-ui/core/Container'
-
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-
-
 import ReactPlayer from 'react-player'
 
 const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 	const classes = useStyles()
 	const [songlist, setSonglist] = useState([])
 	const songsUrl = `songs/`
-	
 	const [loading, setLoading] = useState(true)
 
 	useEffect(function () {
@@ -28,19 +23,16 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 			})
 			.catch(console.error)
 	}, [])
-
 	if (loading) {
 		return (
 			<div>loading....</div>
 		)
 
 	}
-
 	return (
 		<>
 			<Container maxWidth='lg'>
-				<Typography component='h1'>Song List </Typography>
-
+				<Typography component='h1'>Song List</Typography>
 				<Grid container spacing={4} justify='center'>
 					{songlist.map((song) => (
 						<Grid item xs={12} sm={6} lg={4}>
@@ -56,14 +48,11 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 												}}>
 												{song.name}
 											</Typography>
-
 											{song.comments.length ? (
 												<Typography>
 													{song.comments.length} unfinished tasks{' '}
 												</Typography>
 											) : <Typography> No Tasks reported. </Typography>}
-
-									
 
 											<Typography variant='subtitle1' color='textSecondary'>
 												{song.status}
@@ -74,9 +63,13 @@ const Songlist = ({ routerProps, baseUrl, theme, useStyles }) => {
 												image={song.image}
 												title='Live from space album cover'
 											/>
+
+											{
+												// 350 px for a quick fix of git for the width; find a way to make the width dynamic 
+											}
 											<ReactPlayer
 												url={song.file}
-												width='400px'
+												width='350px'
 												height='50px'
 												playing={false}
 												controls={true}
