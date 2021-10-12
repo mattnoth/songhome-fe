@@ -21,18 +21,18 @@ const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 
 	const handleEditSubmit = (e) => {
 		e.preventDefault()
-  
-        Axios.patch(fetchUrl, editFormState).then((response) => {
-            console.log(response)
-            setEditState(false)
-            getSong()
-        })
+
+		Axios.patch(fetchUrl, editFormState).then((response) => {
+			console.log(response)
+			setEditState(false)
+			getSong()
+		})
 	}
 
 	const handleEditChange = (e) => {
 		setEditFormState({ ...editFormState, [e.target.id]: e.target.value })
-    }
-    
+	}
+
 	return (
 		<Card
 			style={{
@@ -81,7 +81,7 @@ const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 							width: '30vw',
 						}}></TextField>
 					<br />
-                    <Button onClick={handleEditSubmit}> SUBMIT CHANGES </Button>
+					<Button onClick={handleEditSubmit}> SUBMIT CHANGES </Button>
 				</form>
 			</CardContent>
 		</Card>

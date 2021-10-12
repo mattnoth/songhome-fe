@@ -5,6 +5,7 @@ import Songlist from './Components/Songlist'
 import Createsong from './Components/Createsong'
 import SongDash from './Components/SongDash'
 import SongTable from './Components/SongTable'
+import HomePage from './Components/Home Page/HomePage'
 import {
 	makeStyles,
 	ThemeProvider,
@@ -13,6 +14,7 @@ import {
 import { orange } from '@material-ui/core/colors'
 
 import './App.css'
+import Edit from './Components/Edit'
 
 function App() {
 
@@ -69,19 +71,31 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<div className='App'>
-				<header className='App-header'>
-					<Route
-						path='/'
-						render={(routerProps) => {
-							return (
-								<Navigation match={routerProps.match} useStyles={useStyles} />
-							)
-						}}
-					/>
-				</header>
+				<Route
+					className='App-header'
+					path='/'
+					render={(routerProps) => {
+						return (
+							<Navigation match={routerProps.match} useStyles={useStyles} />
+						)
+					}}
+				/>
 				<main>
 					<Route
 						path='/'
+						exact
+						render={(routerProps) => {
+							return (
+								<HomePage
+									match={routerProps.match}
+									theme={theme}
+									useStyles={useStyles}
+								/>
+							)
+						}}
+					/>
+					<Route
+						path='/songs'
 						exact
 						render={(routerProps) => {
 							return (
@@ -115,8 +129,17 @@ function App() {
 								<SongDash
 									history={routerProps.history}
 									match={routerProps.match}
-
-
+								/>
+							)
+						}}
+					/>
+					<Route
+						path='/song/:id/edit'
+						return={(routerProps) => {
+							return (
+								<Edit
+									history={routerProps.history}
+									match={routerProps.match}
 								/>
 							)
 						}}

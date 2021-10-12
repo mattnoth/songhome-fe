@@ -42,10 +42,16 @@ const Navigation = ({ useStyles }) => {
 			onClick={toggleDrawer(anchor, false)}
 			onKeyDown={toggleDrawer(anchor, false)}>
 			<List>
-				<ListItem button onClick='' key='createsong'>
+				{/* <ListItem button onClick='' key='home'>
 					<ListItemIcon></ListItemIcon>
 					<NavLink to='/'>
-						<ListItemText primary='Home' />
+						<ListItemText primary='home' />
+					</NavLink>
+				</ListItem> */}
+				<ListItem button onClick='' key='songs'>
+					<ListItemIcon></ListItemIcon>
+					<NavLink to='/songs'>
+						<ListItemText primary='Songs Dashboard' />
 					</NavLink>
 				</ListItem>
 				<ListItem button onClick='' key='createsong'>
