@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom'
 import React from 'react'
 import Navigation from './Components/Navigation'
-import Songlist from './Components/Songlist'
+import ListView from './Components/Songlist'
 import Createsong from './Components/Createsong'
 import SongDash from './Components/SongDash'
 import SongTable from './Components/SongTable'
@@ -17,10 +17,6 @@ import './App.css'
 import Edit from './Components/Edit'
 
 function App() {
-
-
-
-
 
 	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
 
@@ -99,7 +95,7 @@ function App() {
 						exact
 						render={(routerProps) => {
 							return (
-								<Songlist
+								<ListView
 									match={routerProps.match}
 									baseUrl={baseUrl}
 									theme={theme}
