@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom'
 import React from 'react'
 import Navigation from './Components/Navigation'
-import ListView from './Components/Songlist'
+import ListView from './Components/ListView'
 import Createsong from './Components/Createsong'
 import SongDash from './Components/SongDash'
 import SongTable from './Components/SongTable'
@@ -9,7 +9,7 @@ import HomePage from './Components/Home Page/HomePage'
 import {
 	makeStyles,
 	ThemeProvider,
-	createMuiTheme,
+	createTheme,
 } from '@material-ui/core/styles'
 import { orange } from '@material-ui/core/colors'
 
