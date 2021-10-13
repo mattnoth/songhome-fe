@@ -79,80 +79,78 @@ function App() {
 	const classes = useStyles()
 	return (
 		<ThemeProvider theme={theme} className={classes.root} >
-			<Box
-				className={classes.root}>
-				<Route
-					path='/'
-					render={(routerProps) => {
-						return (
-							<Navigation
-								match={routerProps.match}
-								useStyles={useStyles} />
-						)
-					}}
-				/>
-				<Route
-					path='/'
-					exact
-					render={(routerProps) => {
-						return (
-							<HomePage
-								match={routerProps.match}
-								theme={theme}
-								useStyles={useStyles}
-							/>
-						)
-					}}
-				/>
-				<Route
-					path='/dashboard'
-					exact
-					render={(routerProps) => {
-						return (
-							<ListView
-								match={routerProps.match}
-								baseUrl={baseUrl}
-								theme={theme}
-								useStyles={useStyles}
-							/>
-						)
-					}}
-				/>
-				<Route
-					path='/createsong'
-					exact
-					render={(routerProps) => {
-						return (
-							<Createsong
-								match={routerProps.match}
-								baseUrl={baseUrl} />
-						)
-					}}
-				/>
-				<Route
-					path='/songtable'
-					exact
-					render={(routerProps) => {
-						return (
-							<SongTable
-								match={routerProps.match}
-								baseUrl={baseUrl} />
-						)
-					}}
-				/>
-				<Route
-					path='/song/:id'
-					render={(routerProps) => {
-						return (
-							<OneSongDashboard
-								history={routerProps.history}
-								match={routerProps.match}
+			<Route
+				path='/'
+				render={(routerProps) => {
+					return (
+						<Navigation
+							match={routerProps.match}
+							useStyles={useStyles} />
+					)
+				}}
+			/>
+			<Route
+				path='/'
+				exact
+				render={(routerProps) => {
+					return (
+						<HomePage
+							match={routerProps.match}
+							theme={theme}
+							useStyles={useStyles}
+						/>
+					)
+				}}
+			/>
+			<Route
+				path='/dashboard'
+				exact
+				render={(routerProps) => {
+					return (
+						<ListView
+							match={routerProps.match}
+							baseUrl={baseUrl}
+							theme={theme}
+							useStyles={useStyles}
+						/>
+					)
+				}}
+			/>
+			<Route
+				path='/createsong'
+				exact
+				render={(routerProps) => {
+					return (
+						<Createsong
+							match={routerProps.match}
+							baseUrl={baseUrl} />
+					)
+				}}
+			/>
+			<Route
+				path='/songtable'
+				exact
+				render={(routerProps) => {
+					return (
+						<SongTable
+							match={routerProps.match}
+							baseUrl={baseUrl} />
+					)
+				}}
+			/>
+			<Route
+				path='/song/:id'
+				render={(routerProps) => {
+					return (
+						<OneSongDashboard
+							history={routerProps.history}
+							match={routerProps.match}
 
-							/>
-						)
-					}}
-				/>
-				<Route
+						/>
+					)
+				}}
+			/>
+			{/* <Route
 					path='/song/:id/edit'
 					render={(routerProps) => {
 						return (
@@ -162,10 +160,9 @@ function App() {
 							/>
 						)
 					}}
-				/>
-			</Box>
+				/> */}
+
 		</ThemeProvider>
 	)
 }
-
 export default App
