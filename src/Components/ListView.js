@@ -2,15 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
 
-import { Container, Grid, Typography, Card, CardContent, CardMedia } from '@material-ui/core'
+import {
+	Container,
+	Grid,
+	Typography,
+	Card,
+	CardContent,
+	CardMedia
+} from '@material-ui/core'
 
 
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
+// import Container from '@material-ui/core/Container'
+// import Grid from '@material-ui/core/Grid'
+// import Typography from '@material-ui/core/Typography'
+// import Card from '@material-ui/core/Card'
+// import CardContent from '@material-ui/core/CardContent'
+// import CardMedia from '@material-ui/core/CardMedia'
 import ReactPlayer from 'react-player'
 
 const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
@@ -34,7 +41,9 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 	const [loading, setLoading] = useState(true)
 
 
-	/** index method   */
+	/** @index http method to grab full sit of songs and set songs to state. when the songs are set to state, @loading is set to false  */
+
+
 	useEffect(function () {
 		Axios(baseUrl + songsUrl)
 			.then((data) => {
@@ -52,14 +61,14 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 	}
 	return (
 		<>
-			<Container maxWidth='lg'>
+			<Container maxwidth='lg'>
 				<Typography component='h1'>Song List</Typography>
-				<Grid container spacing={4} justify='center'>
+				<Grid container spacing={4} justifyContent='center'>
 					{songlist.map((song) => (
 						<Grid item xs={12} sm={6} lg={4}>
-							<NavLink to={'/song/' + song.id}>
-								<Card>
-									<div className={classes.details}>
+							<NavLink to={'/song/' + song.id} style={{ textDecoration: 'none' }}>
+								<Card >
+									<div className={classes.details} key={song.id}>
 										<CardContent>
 											<Typography
 												component='h5'

@@ -24,7 +24,6 @@ function Basic({ file, setFile, music }) {
 				}}>
 				{' '}
 			</Paper>
-
 			<ul>{files}</ul>
 		</div>
 	)

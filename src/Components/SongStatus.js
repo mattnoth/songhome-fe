@@ -15,7 +15,6 @@ const SongStatus = ({ song, editButton }) => {
 					width: '40%',
 					float: 'left',
 					display: 'inline-block'
-					
 				}}>
 				<Typography variant='h5'>Status: {song.status}</Typography>
 				<Typography variant='h6'>BPM: {song.bpm}</Typography>

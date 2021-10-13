@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 
-import { orange } from '@material-ui/core/colors'
+import { blueGrey } from '@material-ui/core/colors'
 import './details.css'
 
 const Createsong = ({ baseUrl }) => {
@@ -82,10 +82,10 @@ const Createsong = ({ baseUrl }) => {
 
 	return (
 		<Container
-			maxWidth='xl'
+			maxwidth='xl'
 			style={{
 				padding: 20,
-				maxWidth: 1000,
+				maxwidth: 1000,
 				// height: '100vh',
 				backgroundColor: 'gray',
 			}}>
@@ -93,10 +93,10 @@ const Createsong = ({ baseUrl }) => {
 				container
 				height='100vh'
 				width='50vw'
-				justify='center'
-				maxWidth='lg'
+				justifyContent='center'
+				maxwidth='lg'
 				style={{
-					backgroundColor: orange[200],
+					backgroundColor: blueGrey[200],
 					height: '100vh',
 				}}>
 				<Paper
