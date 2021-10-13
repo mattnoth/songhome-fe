@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
-
 import './details.css'
-
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import { yellow } from '@material-ui/core/colors'
+import { blueGrey } from '@material-ui/core/colors'
 import TextField from '@material-ui/core/TextField'
 
 
 const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
+
 
 	const nametxt = 'Name: ' + String(song.name)
 	const statustxt = 'Status: ' + String(song.status)
@@ -21,9 +20,7 @@ const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 
 	const handleEditSubmit = (e) => {
 		e.preventDefault()
-
 		Axios.patch(fetchUrl, editFormState).then((response) => {
-			console.log(response)
 			setEditState(false)
 			getSong()
 		})
@@ -36,7 +33,7 @@ const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 	return (
 		<Card
 			style={{
-				backgroundColor: yellow[100],
+				backgroundColor: blueGrey[100],
 				minHeight: '10vh',
 			}}>
 			<CardContent

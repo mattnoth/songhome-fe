@@ -3,7 +3,7 @@
 
 Beatbay Alpha is the first version of a song specific task management web application. It should be used for listening ToDos on songs, storing song metadata, and storing other useful information about a track. It handles file uploads of audio and images. Main features include a status list of songs in a user's enviornment, and a dashboard for each song where users can edit information about a song and post notes / tasks about the song. Originally, the idea was a web-app for myself to manage my song / beat catalog. I wanted to be able to upload a song, attach meta data to it, listen to it. For works in progress, the ability to write notes attached the song (stretch goal is to have the note jump to a point in the song). 
 
-I also want to do a design overhaul to the dashbaord elements and grid. Time contraints in the initial 5 day sprint. 
+I also want to do a design overhaul to the dashbaord elements and grid. 
 
 In order to use, one must assign their own S3 buckets and database in the backend repo. 
 
@@ -43,6 +43,7 @@ Songhome / Beatbay has a front-end built using Reactjs, implemented with create-
 - Axios for http requests to the server 
 - react router dom for front end routing,
 - react player is used as a simple player for audio 
+- react feather icons for icons 
 
 to run, first clone this application, and then run npm install 
 

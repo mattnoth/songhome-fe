@@ -7,8 +7,10 @@ import {
 	Typography,
 	Card,
 	CardContent,
-	CardMedia
+	CardMedia,
+	Box
 } from '@material-ui/core'
+import CircularProgress from '@mui/material/CircularProgress';
 import ReactPlayer from 'react-player'
 
 const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
@@ -34,7 +36,6 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 
 	/** @index http method to grab full sit of songs and set songs to state. when the songs are set to state, @loading is set to false  */
 
-
 	useEffect(function () {
 		Axios(baseUrl + songsUrl)
 			.then((data) => {
@@ -42,18 +43,20 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 				setLoading(false)
 			})
 			.catch(console.error)
-	}, [songlist])
+	}, [songlist, baseUrl, songsUrl])
 
 	if (loading) {
 		return (
-			<div>loading....</div>
+			<Box sx={{ display: 'flex' }}>
+				<CircularProgress />
+			</Box>
+
 		)
 
 	}
 	return (
 		<>
 			<Container maxwidth='lg'>
-				<Typography component='h1'>Song List</Typography>
 				<Grid container spacing={4} justifyContent='center'>
 					{songlist.map((song) => (
 						<Grid item xs={12} sm={6} lg={4}>

@@ -1,21 +1,16 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-
 import Navigation from './Components/Navigation'
 import ListView from './Components/ListView'
 import Createsong from './Components/Createsong'
 import OneSongDashboard from './Components/OneSongDashboard'
 import SongTable from './Components/SongTable'
-import HomePage from './Components/Home Page/HomePage'
-import Edit from './Components/Edit'
-
 import {
 	makeStyles,
 	ThemeProvider,
 	createTheme,
 } from '@material-ui/core/styles'
 import { blueGrey } from '@material-ui/core/colors'
-import { Box } from '@mui/system'
 
 import './App.css'
 
@@ -94,19 +89,6 @@ function App() {
 				exact
 				render={(routerProps) => {
 					return (
-						<HomePage
-							match={routerProps.match}
-							theme={theme}
-							useStyles={useStyles}
-						/>
-					)
-				}}
-			/>
-			<Route
-				path='/dashboard'
-				exact
-				render={(routerProps) => {
-					return (
 						<ListView
 							match={routerProps.match}
 							baseUrl={baseUrl}
@@ -150,18 +132,6 @@ function App() {
 					)
 				}}
 			/>
-			{/* <Route
-					path='/song/:id/edit'
-					render={(routerProps) => {
-						return (
-							<Edit
-								history={routerProps.history}
-								match={routerProps.match}
-							/>
-						)
-					}}
-				/> */}
-
 		</ThemeProvider>
 	)
 }

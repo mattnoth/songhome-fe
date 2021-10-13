@@ -1,5 +1,4 @@
 import React from 'react';
-
 import CardMedia from '@material-ui/core/CardMedia'
 import ReactPlayer from 'react-player'
 
@@ -7,7 +6,7 @@ const Player = ({ song }) => {
 	return (
 		<CardMedia
 			style={{
-				justify: 'center',
+				justifyContent: 'center',
 				position: 'center',
 			}}>
 			<ReactPlayer

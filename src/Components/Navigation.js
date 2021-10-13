@@ -14,7 +14,6 @@ import { Box } from '@mui/system'
 
 import {
 	Grid,
-	Home,
 	Music,
 	Play
 } from 'react-feather'
@@ -58,17 +57,6 @@ const Navigation = ({ useStyles }) => {
 				onClick={toggleDrawer(anchor, false)}
 				onKeyDown={toggleDrawer(anchor, false)}>
 				<NavLink to='/' style={{ textDecoration: 'none' }}>
-					<ListItem key='home' >
-						<ListItemIcon>
-							<Home />
-						</ListItemIcon>
-						<ListItemText
-							disableTypography
-							primary={<Typography type="body2" style={{ color: 'black' }}>Home</Typography>}
-						/>
-					</ListItem>
-				</NavLink>
-				<NavLink to='/dashboard/' style={{ textDecoration: 'none' }}>
 					<ListItem key='dashboard'>
 						<ListItemIcon>
 							<Music />
