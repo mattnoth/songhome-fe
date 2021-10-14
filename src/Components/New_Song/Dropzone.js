@@ -1,7 +1,8 @@
 import React from 'react'
-import './details.css'
 import Paper from '@material-ui/core/Paper'
 import { useDropzone } from 'react-dropzone'
+
+import './dropzone.css'
 
 function Basic({ file, setFile, music }) {
 	const { acceptedFiles, getRootProps, getInputProps } = useDropzone({

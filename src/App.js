@@ -2,8 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Navigation from './Components/Navigation'
 import ListView from './Components/ListView'
-import Createsong from './Components/Createsong'
-import OneSongDashboard from './Components/OneSongDashboard'
+import Createsong from './Components/New_Song/Createsong'
+import OneSongDashboard from './Components/Show_One/OneSongDashboard'
 import SongTable from './Components/SongTable'
 import {
 	makeStyles,

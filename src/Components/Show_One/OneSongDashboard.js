@@ -1,32 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import SongStatus from './SongStatus'
-import Edit from './Edit'
+import Axios from 'axios'
+
+import SongInformation from './SongInformation'
+import Edit from '../Edit'
 import SongTasks from './SongTasks'
 import PostSongTask from './PostSongTask'
-import Player from './Player'
+import Player from '../Player'
+
 import { SkipBack } from 'react-feather'
-
 import CircularProgress from '@mui/material/CircularProgress';
-
-import Axios from 'axios'
 import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Box from '@mui/material/Box';
-
-// import Paper from '@mui/material/Paper';
-// import { styled } from '@mui/material/styles';
-
 import { blueGrey } from '@material-ui/core/colors'
 
-const OneSongDashboard = ({ match, history }) => {
 
-	// const Item = styled(Paper)(({ theme }) => ({
-	// 	...theme.typography.body2,
-	// 	padding: theme.spacing(1),
-	// 	textAlign: 'center',
-	// 	color: theme.palette.text.secondary,
-	// }));
+const OneSongDashboard = ({ match, history }) => {
 
 	/** @returns Individual song route  */
 
@@ -65,16 +55,20 @@ const OneSongDashboard = ({ match, history }) => {
 	}, [getSong])
 
 
+	//** @TODO -- Have the edit button lead to a new route !! 
+	//As of now, it is a simple boolean workaround to set to edit state */
 	const editButton = (e) => {
 		e.preventDefault()
 		setEditState(true)
 	}
 
+	//take the history object to go back within the app 
 	const goBack = (e) => {
 		e.preventDefault()
 		history.goBack()
 	}
 
+	// ensures the song is loaded, if not, display the loader 
 	if (!song) {
 		return (
 			<Box sx={{ display: 'flex' }}>
@@ -83,6 +77,8 @@ const OneSongDashboard = ({ match, history }) => {
 		)
 	}
 
+	// if the editState is true render the Edit component, 
+	// @Props takes song, fetchUrl, editState, setEditState, getSong 
 	if (editState) {
 		return (
 			<Edit
@@ -94,7 +90,6 @@ const OneSongDashboard = ({ match, history }) => {
 			/>
 		)
 	}
-
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<Grid container spacing={2} >
@@ -114,7 +109,7 @@ const OneSongDashboard = ({ match, history }) => {
 					variant='h3'>
 					{song.name}
 				</Typography>
-				<SongStatus
+				<SongInformation
 					song={song}
 					editButton={editButton}
 					history={history}

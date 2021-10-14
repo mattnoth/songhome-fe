@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 
 import { blueGrey } from '@material-ui/core/colors'
-import './details.css'
+
 
 const Createsong = ({ baseUrl }) => {
 

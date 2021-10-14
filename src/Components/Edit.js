@@ -10,14 +10,17 @@ import TextField from '@material-ui/core/TextField'
 
 const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 
+	//@Edit Form takes user input and form state to update song status
 
 	const nametxt = 'Name: ' + String(song.name)
 	const statustxt = 'Status: ' + String(song.status)
 	const bpmtxt = 'BPM: ' + String(song.bpm)
 	const keytxt = 'Key: ' + String(song.key)
 
+	//** @Type state variable array; stores formState and sets formstate */
 	const [editFormState, setEditFormState] = useState({})
 
+	//**OnClick event for updating the song information */
 	const handleEditSubmit = (e) => {
 		e.preventDefault()
 		Axios.patch(fetchUrl, editFormState).then((response) => {
@@ -26,6 +29,7 @@ const Edit = ({ song, fetchUrl, setEditState, getSong }) => {
 		})
 	}
 
+	//** @returns user input into state */
 	const handleEditChange = (e) => {
 		setEditFormState({ ...editFormState, [e.target.id]: e.target.value })
 	}
