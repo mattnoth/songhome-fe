@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import MenuIcon from '@material-ui/icons/Menu'
-import Typography from '@material-ui/core/Typography'
 
+/** MaterialUi Components are not deconstructed for faster performance */
+import AppBar from '@material-ui/core/AppBar'
+import Typography from '@material-ui/core/Typography'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import MenuIcon from '@material-ui/icons/Menu'
+import { Box } from '@mui/system'
+
+import {
+	Grid,
+	Music,
+	Play
+} from 'react-feather'
+
 import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
 import { NavLink } from 'react-router-dom'
@@ -29,44 +38,70 @@ const Navigation = ({ useStyles }) => {
 		) {
 			return
 		}
-
 		setState({ ...state, [anchor]: open })
 	}
 
-	const list = (anchor) => (
-		<div
-			className={clsx(classes.list, {
-				[classes.fullList]: anchor === 'top' || anchor === 'bottom',
-			})}
-			role='presentation'
-			onClick={toggleDrawer(anchor, false)}
-			onKeyDown={toggleDrawer(anchor, false)}>
-			<List>
-				<ListItem button onClick='' key='createsong'>
-					<ListItemIcon></ListItemIcon>
-					<NavLink to='/'>
-						<ListItemText primary='Home' />
-					</NavLink>
-				</ListItem>
-				<ListItem button onClick='' key='createsong'>
-					<ListItemIcon></ListItemIcon>
-					<NavLink to='/createsong/'>
-						<ListItemText primary='Create Song' />
-					</NavLink>
-				</ListItem>
-			</List>
-	
-		</div>
-	)
 
-	return (
+
+	// list applies temporary styles || classes to the drawer when toggled 
+	// Each List Item is wrapped in NavLink 
+	// Currently the anchor styles are overridden using a weird work around; 
+	// @TODO -- move styles to a seperate file 
+	const list = (anchor) => (
 		<>
-			<AppBar position='static'>
+			<List
+				className={clsx(classes.list, {
+					[classes.fullList]: anchor === 'top' || anchor === 'bottom',
+				})}
+				role='presentation'
+				onClick={toggleDrawer(anchor, false)}
+				onKeyDown={toggleDrawer(anchor, false)}>
+				<NavLink to='/' style={{ textDecoration: 'none' }}>
+					<ListItem key='dashboard'>
+						<ListItemIcon>
+							<Music />
+						</ListItemIcon>
+						<ListItemText
+							disableTypography
+							primary={<Typography type="body2" style={{ color: 'black' }}>Dashboard</Typography>} />
+					</ListItem>
+				</NavLink>
+				<NavLink to='/createsong/' style={{ textDecoration: 'none' }}>
+					<ListItem key='createsong'>
+						<ListItemIcon>
+							<Play />
+						</ListItemIcon>
+						<ListItemText disableTypography
+							primary={<Typography type="body2" style={{ color: 'black' }}>Create Song</Typography>} />
+					</ListItem>
+				</NavLink >
+				<NavLink to='/songtable/' style={{ textDecoration: 'none' }}>
+					<ListItem key='song table'>
+						<ListItemIcon>
+							<Grid />
+						</ListItemIcon>
+						<ListItemText disableTypography
+							primary={<Typography type="body2" style={{ color: 'black' }}>Table View</Typography>} />
+					</ListItem>
+				</NavLink>
+			</List>
+		</>
+	)
+	//@TODO - add Nav items on the AppBar itself with correct Spacing 
+	return (
+		<Box sx={{ flexGrow: 1 }}>
+			<AppBar position='static' className={classes.root}>
 				<Toolbar>
-					<IconButton edge='start' className color='inherit' aria-label='menu'>
-						<MenuIcon onClick={toggleDrawer('left', true)} />
+					<IconButton
+						edge='start'
+						className='inherit'
+						aria-label='menu'
+						onClick={toggleDrawer('left', true)}>
+						<MenuIcon />
 					</IconButton>
-					<Typography variant='h6'>Beatbay</Typography>
+					<NavLink to='/' style={{ textDecoration: 'none' }} >
+						<Typography variant='h6' component="div" sx={{ flexGrow: 1 }} style={{ color: 'white ' }}>Beatbay</Typography>
+					</NavLink>
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -75,7 +110,7 @@ const Navigation = ({ useStyles }) => {
 				onClose={toggleDrawer('left', false)}>
 				{list('left')}
 			</Drawer>
-		</>
+		</Box>
 	)
 }
 
