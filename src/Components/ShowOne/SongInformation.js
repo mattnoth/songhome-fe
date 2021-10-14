@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button'
 import CardContent from '@material-ui/core/CardContent'
 import { Container } from 'react-bootstrap'
 
-const SongStatus = ({ song, editButton }) => {
+const SongInformation = ({ song, editButton }) => {
+	//PROPS @song @editButton 
 	return (
 		<Container>
 			<CardContent
@@ -31,4 +32,4 @@ const SongStatus = ({ song, editButton }) => {
 	)
 }
 
-export default SongStatus
+export default SongInformation

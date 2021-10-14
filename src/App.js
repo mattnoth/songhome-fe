@@ -2,8 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Navigation from './Components/Navigation'
 import ListView from './Components/ListView'
-import Createsong from './Components/New_Song/Createsong'
-import OneSongDashboard from './Components/Show_One/OneSongDashboard'
+import Createsong from './Components/NewSong/Createsong'
+import OneSongDashboard from './Components/ShowOne/OneSongDashboard'
 import SongTable from './Components/SongTable'
 import {
 	makeStyles,
@@ -14,6 +14,7 @@ import { blueGrey } from '@material-ui/core/colors'
 
 import './App.css'
 
+//TODO -- Breakdown the stylees into their individual components 
 // useStyles is Material UI's overide of CSS and is used to apply classes 
 // to elements as well as use theme to create general theme for entire SPA 
 

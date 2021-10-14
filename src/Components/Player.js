@@ -3,6 +3,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import ReactPlayer from 'react-player'
 
 const Player = ({ song }) => {
+	//** @song file brought down as a prop */
+	// ReactPlayer is a simple player npm package; takes file, playing, controls as props 
 	return (
 		<CardMedia
 			style={{
