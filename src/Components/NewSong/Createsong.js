@@ -5,7 +5,7 @@ import Dropzone from './Dropzone'
 import { useHistory } from 'react-router'
 
 import Container from '@material-ui/core/Container'
-
+import CircularProgress from 'material-ui/CircularProgress'
 import TextField from '@material-ui/core/TextField'
 import { Typography } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
@@ -17,11 +17,23 @@ import { blueGrey } from '@material-ui/core/colors'
 
 const Createsong = ({ baseUrl }) => {
 
+	// Returns form for CreateSong form for create new song 
+	//@Props, takes the baseUrl 
+
+	//@state loading, sets and checks songlist status 
 	const [loading, setLoading] = useState(false)
+
+	//history - react router dom prop 
 	const history = useHistory()
+
+	//@state - file -- song file into state when dropped into the drag and drop 
 	const [file, setFile] = useState('')
+
+	//@state image -- stores the image file into state when dropped 
 	const [image, setImage] = useState('')
 
+	//@state initial state of the form-- includes all routes 
+	//TODO add form points for each song object property 
 	const initialState = {
 		name: '',
 		image: '',
@@ -43,9 +55,12 @@ const Createsong = ({ baseUrl }) => {
 		},
 	}
 
+
+	//@state - total form state object || set to inital state at first render 
+	// @setFormState -- setter for the form after user input
 	const [formState, setFormState] = useState(initialState)
 
-
+	//
 	const url = `${baseUrl}songs/`
 
 	const handleChange = (e) => {
@@ -77,7 +92,7 @@ const Createsong = ({ baseUrl }) => {
 	}
 
 	if (loading) {
-		return <div> uploading....... </div>
+		return <CircularProgress />
 	}
 
 	return (
