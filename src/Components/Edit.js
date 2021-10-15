@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
-import './details.css'
+
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'

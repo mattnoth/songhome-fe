@@ -12,8 +12,6 @@ import {
 } from '@material-ui/core/styles'
 import { blueGrey } from '@material-ui/core/colors'
 
-import './App.css'
-
 //TODO -- Breakdown the stylees into their individual components 
 // useStyles is Material UI's overide of CSS and is used to apply classes 
 // to elements as well as use theme to create general theme for entire SPA 
@@ -72,9 +70,8 @@ const theme = createTheme({
 
 function App() {
 	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
-	const classes = useStyles()
 	return (
-		<ThemeProvider theme={theme} className={classes.root} >
+		<ThemeProvider theme={theme}>
 			<Route
 				path='/'
 				render={(routerProps) => {

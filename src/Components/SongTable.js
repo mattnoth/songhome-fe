@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
 import { useTable } from "react-table";
 
 
-// import style from "./styles.css";
-
-
 function SongTable({ baseUrl }) {
+
+    // SongTable is a work in progress -- 
+    // @TODO is to create automatically generated Edit column || For that the Edit Route 
+    // @TODO add each route to the table; make each cell editable, similar to the Edit forum 
 
     const [songlist, setSonglist] = useState([])
     const songsUrl = `songs/`
-
     const [loading, setLoading] = useState(true)
 
-    React.useEffect(function () {
+    useEffect(function () {
         Axios(baseUrl + songsUrl)
             .then((data) => {
                 setSonglist(data.data)
-
                 setLoading(false)
 
             })
             .catch(console.error)
-    }, [])
+    }, [baseUrl, songsUrl])
 
     const data = React.useMemo(
         () => {
-            console.log(songlist)
-
             const object = songlist.map((song) => {
                 return {
                     name: song.name,
                     status: song.status,
-                    FooBar: "hello"
+                    key: song.key,
+                    bpm: song.bpm,
+                    edit: 'Link to Edit'
                 }
             })
             return object;
@@ -41,16 +39,6 @@ function SongTable({ baseUrl }) {
         },
         [songlist]
     );
-
-
-    //map the song list that i can add an edit key too 
-
-    // const parseColumnsFromSeedData = () => {
-
-    //     let returnObject ={ 
-    //         Header: songlist.
-    //         accessor
-    //     }
 
     const columns = React.useMemo(
         () => [
@@ -63,9 +51,18 @@ function SongTable({ baseUrl }) {
                 accessor: "status",
             },
             {
-                Header: "FooBar",
-                accessor: "FooBar"
-            }
+                Header: "Key",
+                accessor: "key"
+            },
+            {
+                Header: "BPM",
+                accessor: "bpm"
+            },
+            {
+                Header: "Edit",
+                accessor: "edit"
+            },
+
 
         ],
         [songlist]
@@ -75,7 +72,6 @@ function SongTable({ baseUrl }) {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        // footerGroups,
         rows,
         prepareRow,
     } = useTable({ columns, data });

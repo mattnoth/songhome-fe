@@ -8,17 +8,44 @@ import PostSongTask from './PostSongTask'
 import Player from '../Player'
 
 import { SkipBack } from 'react-feather'
+import { makeStyles } from '@material-ui/core'
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Box from '@mui/material/Box';
-import { blueGrey } from '@material-ui/core/colors'
+import Paper from '@material-ui/core/Paper'
 
+import { blueGrey } from '@material-ui/core/colors'
+import { grey100 } from 'material-ui/styles/colors'
+
+const useStyles = makeStyles({
+	root: {
+		backgroundColor: grey100,
+
+	},
+	header: {
+		alignItems: 'center',
+
+	},
+	artwork: {
+		height: '200px',
+		width: '200px',
+		display: 'flex',
+		textAlign: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: '20px'
+	}
+
+})
 
 const OneSongDashboard = ({ match, history }) => {
 
 	/** @returns Individual song route  */
+
+	/** allows for the application of material UI classes */
+	const classes = useStyles()
 
 	/** @const baseUrl is a placeholder for the initial API */
 	const baseUrl = 'https://blooming-earth-00957.herokuapp.com/'
@@ -79,6 +106,8 @@ const OneSongDashboard = ({ match, history }) => {
 
 	// if the editState is true render the Edit component, 
 	// @Props takes song, fetchUrl, editState, setEditState, getSong 
+	// @TODO create the correct navigation route for edit 
+
 	if (editState) {
 		return (
 			<Edit
@@ -91,63 +120,87 @@ const OneSongDashboard = ({ match, history }) => {
 		)
 	}
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<Grid container spacing={2} >
-				<Grid item xs={1}>
-					<Button
-						onClick={goBack}
-						style={{
-							display: 'inline',
-							textAlign: 'left',
-						}}>
-						{' '}
-						<SkipBack />
-						{' '}
-					</Button>
+		<Paper className={classes.root}>
+			<Grid container spacing={2}>
+				<Grid container xs={12} className={classes.header}>
+					<Grid item xs={2}>
+						<Button
+							onClick={goBack}
+						>
+							{' '}
+							<SkipBack />
+							{' '}
+						</Button>
+					</Grid>
+					<Grid item xs={8}>
+						<Typography
+							variant='h4'
+							style={{
+								'text-align': 'center'
+							}}
+
+						>
+							{song.name}
+						</Typography>
+					</Grid>
+					<Grid item xs={2}>
+						<Button onClick={editButton}>EDIT</Button>
+					</Grid>
 				</Grid>
-				<Typography
-					variant='h3'>
-					{song.name}
-				</Typography>
-				<SongInformation
-					song={song}
-					editButton={editButton}
-					history={history}
-				/>
 				<Grid
-					item
-					xs={12}
-					sm={6}
-					lg={6}
-					justifyContent='center'
-					row>
+					container
+					direction="column"
+					alignItems="center"
+					justifyContent="center">
+					<img className={classes.artwork} src={song.image} alt='' />
+				</Grid>
+				<Grid item xs={12}>
 					<Box
 						square
 						style={{
-							backgroundColor: blueGrey[100],
+							backgroundColor: blueGrey[20],
 							padding: 20,
 							justify: 'center',
-							minWidth: '400px',
+							// minWidth: '400px',
 						}}>
 						<Player song={song} />
 					</Box>
 				</Grid>
-				<PostSongTask
-					song={song}
-					comments={comments}
-					setComments={setComments}
-					getSong={getSong}
-				/>
-				<SongTasks
-					song={song}
-					setSong={setSong}
-					baseUrl={baseUrl}
-					comments={comments}
-					setComments={setComments}
-					getSong={getSong}
-				/>
+				<Grid container xs={12}>
+					<SongInformation
+						song={song}
+						history={history}
+					/>
+				</Grid>
+				<Grid container xs={12}>
+					<Box
+						square
+						style={{
+							backgroundColor: blueGrey[20],
+							padding: 20,
+							justify: 'center',
+							display: "flex",
+							justifyContent: "center",
+							alignItems: 'center'
+						}}>
+						<PostSongTask
+							song={song}
+							comments={comments}
+							setComments={setComments}
+							getSong={getSong}
+						/>
+						<SongTasks
+							song={song}
+							setSong={setSong}
+							baseUrl={baseUrl}
+							comments={comments}
+							setComments={setComments}
+							getSong={getSong}
+						/>
+					</Box>
+				</Grid>
 			</Grid>
-		</Box>
+		</Paper>
 	)
 }
 
