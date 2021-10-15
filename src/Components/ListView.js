@@ -16,9 +16,7 @@ import ReactPlayer from 'react-player'
 const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 	/**
 	 * @ListView component returns a list of all the songs with players 
-	 * 
 	 */
-
 	// Material UI styles 
 	const classes = useStyles()
 
@@ -50,16 +48,19 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 			<Box sx={{ display: 'flex' }}>
 				<CircularProgress />
 			</Box>
-
 		)
-
 	}
 	return (
 		<>
 			<Container maxwidth='lg'>
 				<Grid container spacing={4} justifyContent='center'>
 					{songlist.map((song) => (
-						<Grid item xs={12} sm={6} lg={4}>
+						<Grid
+							item xs={12}
+							sm={6}
+							lg={4}
+							style={{ padding: '20px' }}
+						>
 							<NavLink to={'/song/' + song.id} style={{ textDecoration: 'none' }}>
 								<Card >
 									<div className={classes.details} key={song.id}>
@@ -81,13 +82,11 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 											<Typography variant='subtitle1' color='textSecondary'>
 												{song.status}
 											</Typography>
-											{/* <img src={song.image} className='image-paper' alt='' /> */}
 											<CardMedia
 												className={classes.cover}
 												image={song.image}
 												title='Live from space album cover'
 											/>
-
 											{
 												// 350 px for a quick fix of git for the width; find a way to make the width dynamic 
 											}
