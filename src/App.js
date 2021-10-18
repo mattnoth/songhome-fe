@@ -67,6 +67,8 @@ const theme = createTheme({
 })
 
 // TODO -- Fix the EDIT route to properly navigate to /songs/:id/edit to make accessible in TableView 
+// TODO -- Add unit tests on posts 
+// TODO -- add delete route for song 
 
 function App() {
 	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
