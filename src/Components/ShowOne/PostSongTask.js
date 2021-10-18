@@ -6,10 +6,13 @@ const PostSongTask = ({ song, getSong }) => {
 
 	const commentUrl = 'https://blooming-earth-00957.herokuapp.com/comments/'
 
+	// TODO clear form state add post song task 
+
 	const initialFormState = {
 		text: '',
 		song: '',
 	}
+
 	const [formState, setFormState] = useState(initialFormState)
 
 	const handleChange = (event, plant_id) => {
