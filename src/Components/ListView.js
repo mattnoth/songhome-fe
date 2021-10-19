@@ -61,6 +61,7 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 							sm={6}
 							lg={4}
 							style={{ padding: '20px' }}
+							key={song.id}
 						>
 							<NavLink to={'/song/' + song.id} style={{ textDecoration: 'none' }}>
 								<Card >

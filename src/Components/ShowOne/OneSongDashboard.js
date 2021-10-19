@@ -136,7 +136,7 @@ const OneSongDashboard = ({ match, history }) => {
 						<Typography
 							variant='h4'
 							style={{
-								'text-align': 'center'
+								'textAlign': 'center'
 							}}
 
 						>
