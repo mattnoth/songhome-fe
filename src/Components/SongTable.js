@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Axios from 'axios'
+import CircularProgress from '@mui/material/CircularProgress';
 import { useTable } from "react-table";
-
+import { Link } from 'react-router-dom'
 
 function SongTable({ baseUrl }) {
 
     // SongTable is a work in progress -- 
-    // @TODO is to create automatically generated Edit column || For that the Edit Route 
-    // @TODO add each route to the table; make each cell editable, similar to the Edit forum 
+    //@TODO Integrate MUI table components 
 
+    //** @const type state for songs */
     const [songlist, setSonglist] = useState([])
     const songsUrl = `songs/`
     const [loading, setLoading] = useState(true)
+
+    //** fetch call for grabbing songs @- re to do, build a data store using redux*/
 
     useEffect(function () {
         Axios(baseUrl + songsUrl)
@@ -23,15 +26,17 @@ function SongTable({ baseUrl }) {
             .catch(console.error)
     }, [baseUrl, songsUrl])
 
-    const data = React.useMemo(
+
+    //** data is req for react table; memoizes the row data by using the accessor as the key for the column  */
+    const data = useMemo(
         () => {
             const object = songlist.map((song) => {
                 return {
                     name: song.name,
-                    status: song.status,
                     key: song.key,
                     bpm: song.bpm,
-                    edit: 'Link to Edit'
+                    status: song.status,
+                    edit: <Link to={`/song/${song.id}/edit`}> EDIT </Link>
                 }
             })
             return object;
@@ -40,15 +45,13 @@ function SongTable({ baseUrl }) {
         [songlist]
     );
 
-    const columns = React.useMemo(
+    //** memoizes column data, uses accessor as the key for data, and gives access to each header object */
+
+    const columns = useMemo(
         () => [
             {
                 Header: "Name",
                 accessor: "name", // accessor is the "key" in the data
-            },
-            {
-                Header: "Status",
-                accessor: "status",
             },
             {
                 Header: "Key",
@@ -59,14 +62,23 @@ function SongTable({ baseUrl }) {
                 accessor: "bpm"
             },
             {
+                Header: "Notes",
+                accessor: "status",
+            },
+            {
                 Header: "Edit",
                 accessor: "edit"
+
             },
 
 
         ],
-        [songlist]
+        []
     );
+
+    /** Use Table is the basic hook for React table that deconstructes table's data and columns
+     * @TODO -- add in MUI Themeing, add editable cells 
+     */
 
     const {
         getTableProps,
@@ -78,18 +90,11 @@ function SongTable({ baseUrl }) {
 
     if (loading) {
         return (
-            <div>loading....</div>
+            <CircularProgress />
         )
-
     }
-
     return (
         <>
-            {
-                console.log(songlist, "in jsx")
-
-            }
-
             <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
                 <thead>
                     {headerGroups.map((headerGroup) => (
@@ -112,15 +117,6 @@ function SongTable({ baseUrl }) {
                         );
                     })}
                 </tbody>
-                {/* <tfoot>
-                    {footerGroups.map((footerGroup) => (
-                        <tr {...footerGroup.getFooterGroupProps()}>
-                            {footerGroup.headers.map((column) => (
-                                <td {...column.getFooterProps}>{column.render("Footer")}</td>
-                            ))}
-                        </tr>
-                    ))}
-                </tfoot> */}
             </table>
         </>
     );

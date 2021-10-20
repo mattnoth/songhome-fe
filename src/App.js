@@ -5,6 +5,7 @@ import ListView from './Components/ListView'
 import Createsong from './Components/NewSong/Createsong'
 import OneSongDashboard from './Components/ShowOne/OneSongDashboard'
 import SongTable from './Components/SongTable'
+import Edit from './Components/Edit'
 import {
 	makeStyles,
 	ThemeProvider,
@@ -66,10 +67,10 @@ const theme = createTheme({
 	},
 })
 
-// TODO -- Fix the EDIT route to properly navigate to /songs/:id/edit to make accessible in TableView 
-// TODO -- Add unit tests on posts 
+//* Add a JEST Unit Test  */
 // TODO -- add delete route for song 
 
+//** All accessible route paths and top level of rendered components  */
 function App() {
 	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
 	return (
@@ -105,7 +106,8 @@ function App() {
 					return (
 						<Createsong
 							match={routerProps.match}
-							baseUrl={baseUrl} />
+							baseUrl={baseUrl}
+						/>
 					)
 				}}
 			/>
@@ -116,18 +118,32 @@ function App() {
 					return (
 						<SongTable
 							match={routerProps.match}
-							baseUrl={baseUrl} />
+							baseUrl={baseUrl}
+						/>
 					)
 				}}
 			/>
 			<Route
 				path='/song/:id'
+				exact
 				render={(routerProps) => {
 					return (
 						<OneSongDashboard
 							history={routerProps.history}
 							match={routerProps.match}
-
+						/>
+					)
+				}}
+			/>
+			<Route
+				path='/song/:id/edit'
+				exact
+				render={(routerProps) => {
+					return (
+						<Edit
+							history={routerProps.history}
+							match={routerProps.match}
+							baseUrl={baseUrl}
 						/>
 					)
 				}}

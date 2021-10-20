@@ -24,16 +24,12 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 	const [songlist, setSonglist] = useState([])
 
 	//**placeholder variable for fetch call  */
-
-
 	const songsUrl = `songs/`
 
 	// boolean state variable to prevent component mount before data load 
 	const [loading, setLoading] = useState(true)
 
-
 	/** @index http method to grab full sit of songs and set songs to state. when the songs are set to state, @loading is set to false  */
-
 	useEffect(function () {
 		Axios(baseUrl + songsUrl)
 			.then((data) => {
@@ -61,6 +57,7 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 							sm={6}
 							lg={4}
 							style={{ padding: '20px' }}
+							key={song.id}
 						>
 							<NavLink to={'/song/' + song.id} style={{ textDecoration: 'none' }}>
 								<Card >
