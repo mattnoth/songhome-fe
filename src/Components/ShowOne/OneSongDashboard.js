@@ -25,7 +25,9 @@ const useStyles = makeStyles({
 
 	},
 	header: {
+		display: 'flex',
 		alignItems: 'center',
+		justifyContent: 'center'
 
 	},
 	artwork: {
@@ -99,7 +101,7 @@ const OneSongDashboard = ({ match, history }) => {
 	return (
 		<Paper className={classes.root}>
 			<Grid container spacing={2}>
-				<Grid container xs={12} className={classes.header}>
+				<Grid item xs={12} className={classes.header}>
 					<Grid item xs={2}>
 						<Button
 							onClick={goBack}
@@ -122,7 +124,7 @@ const OneSongDashboard = ({ match, history }) => {
 					</Grid>
 					<Grid item xs={2}>
 						<Link to={`/song/${song.id}/edit`}>
-							<Button secondary>
+							<Button secondary='true'>
 								EDIT
 							</Button>
 						</Link>
@@ -146,13 +148,13 @@ const OneSongDashboard = ({ match, history }) => {
 						<Player song={song} />
 					</Box>
 				</Grid>
-				<Grid container xs={12}>
+				<Grid item xs={12}>
 					<SongInformation
 						song={song}
 						history={history}
 					/>
 				</Grid>
-				<Grid container xs={12}>
+				<Grid item xs={12}>
 					<Box
 						square
 						style={{

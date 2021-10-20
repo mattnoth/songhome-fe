@@ -8,7 +8,7 @@ import { blueGrey } from '@material-ui/core/colors'
 import TextField from '@material-ui/core/TextField'
 
 
-const Edit = ({ baseUrl, match }) => {
+const Edit = ({ baseUrl, match, history }) => {
 
 	//@Edit Form takes user input and form state to update song status
 
@@ -44,6 +44,7 @@ const Edit = ({ baseUrl, match }) => {
 	);
 
 	/** @useEffect - runs the @getSong callback  */
+
 	useEffect(() => {
 		getSong()
 	}, [getSong])
@@ -51,13 +52,16 @@ const Edit = ({ baseUrl, match }) => {
 
 	//**OnClick event for updating the song information */
 	//** TODO history --  use the history.push go back  */
+	/** @TODO Fix memory leakk  */
 
 	const handleEditSubmit = (e) => {
 		e.preventDefault()
 		Axios.patch(fetchUrl, editFormState).then((response) => {
 			getSong()
 		})
+		history.goBack()
 	}
+
 
 	//** @returns user input into state */
 	const handleEditChange = (e) => {
