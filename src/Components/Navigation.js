@@ -41,11 +41,7 @@ const Navigation = ({ useStyles }) => {
 		setState({ ...state, [anchor]: open })
 	}
 
-
-
 	// list applies temporary styles || classes to the drawer when toggled 
-	// Each List Item is wrapped in NavLink 
-	// Currently the anchor styles are overridden using a weird work around; 
 	// @TODO -- move styles to a seperate file 
 	const list = (anchor) => (
 		<>

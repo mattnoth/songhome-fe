@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Axios from 'axios'
 
 import SongInformation from './SongInformation'
-import Edit from '../Edit'
 import SongTasks from './SongTasks'
 import PostSongTask from './PostSongTask'
 import Player from '../Player'
@@ -18,6 +17,7 @@ import Paper from '@material-ui/core/Paper'
 
 import { blueGrey } from '@material-ui/core/colors'
 import { grey100 } from 'material-ui/styles/colors'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
 	root: {
@@ -54,7 +54,7 @@ const OneSongDashboard = ({ match, history }) => {
 	const [song, setSong] = useState({})
 
 	/** @type @state edit state if true opens up edit 'modal' */
-	const [editState, setEditState] = useState(false)
+	// const [editState, setEditState] = useState(false)
 
 	/**@type @state contains comments to render */
 	const [comments, setComments] = useState([])
@@ -81,14 +81,6 @@ const OneSongDashboard = ({ match, history }) => {
 		getSong()
 	}, [getSong])
 
-
-	//** @TODO -- Have the edit button lead to a new route !! 
-	//As of now, it is a simple boolean workaround to set to edit state */
-	const editButton = (e) => {
-		e.preventDefault()
-		setEditState(true)
-	}
-
 	//take the history object to go back within the app 
 	const goBack = (e) => {
 		e.preventDefault()
@@ -104,21 +96,6 @@ const OneSongDashboard = ({ match, history }) => {
 		)
 	}
 
-	// if the editState is true render the Edit component, 
-	// @Props takes song, fetchUrl, editState, setEditState, getSong 
-	// @TODO create the correct navigation route for edit 
-
-	if (editState) {
-		return (
-			<Edit
-				song={song}
-				fetchUrl={fetchUrl}
-				editState={editState}
-				setEditState={setEditState}
-				getSong={getSong}
-			/>
-		)
-	}
 	return (
 		<Paper className={classes.root}>
 			<Grid container spacing={2}>
@@ -144,7 +121,11 @@ const OneSongDashboard = ({ match, history }) => {
 						</Typography>
 					</Grid>
 					<Grid item xs={2}>
-						<Button onClick={editButton}>EDIT</Button>
+						<Link to={`/song/${song.id}/edit`}>
+							<Button secondary>
+								EDIT
+							</Button>
+						</Link>
 					</Grid>
 				</Grid>
 				<Grid
@@ -161,7 +142,6 @@ const OneSongDashboard = ({ match, history }) => {
 							backgroundColor: blueGrey[20],
 							padding: 20,
 							justify: 'center',
-							// minWidth: '400px',
 						}}>
 						<Player song={song} />
 					</Box>

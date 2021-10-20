@@ -9,9 +9,7 @@ import { blueGrey } from '@material-ui/core/colors'
 
 const SongTasks = ({ song, setSong, baseUrl, comments, setComments, getSong }) => {
 
-	// const songId = song.id
-
-	// const songUrl = `${baseUrl}songs/${songId}`
+	//** list of song tasks and delete functionality   */
 
 	const commentUrl = `https://blooming-earth-00957.herokuapp.com/comments/`
 
@@ -21,6 +19,7 @@ const SongTasks = ({ song, setSong, baseUrl, comments, setComments, getSong }) =
 		})
 	}
 
+	//** Map over song comments  */
 	return (
 		<Container
 			style={{
@@ -33,20 +32,16 @@ const SongTasks = ({ song, setSong, baseUrl, comments, setComments, getSong }) =
 							style={{
 								backgroundColor: blueGrey[100]
 							}} key={comment.id}>
-
 							<Typography
 								style={{
 									textAlign: 'left',
 									display: 'inline'
 								}}
 							> {comment.text} </Typography>
-
-
 							<Button
 								style={{
 									display: 'inline',
 									color: 'green'
-
 								}}
 								onClick={(event) => {
 									handleDeleteComment(event, comment.id)
