@@ -33,7 +33,6 @@ const ListView = ({ routerProps, baseUrl, theme, useStyles }) => {
 	useEffect(function () {
 		Axios(baseUrl + songsUrl)
 			.then((data) => {
-				console.log(data.data)
 				setSonglist(data.data)
 				setLoading(false)
 			})
