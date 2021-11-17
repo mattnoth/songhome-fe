@@ -1,6 +1,20 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import Axios from 'axios'
 import CircularProgress from '@mui/material/CircularProgress';
+
+
+import MaUTable from '@material-ui/core/Table'
+
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+
+
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+
+
+
 import { useTable } from "react-table";
 import { Link } from 'react-router-dom'
 
@@ -21,7 +35,6 @@ function SongTable({ baseUrl }) {
             .then((data) => {
                 setSonglist(data.data)
                 setLoading(false)
-
             })
             .catch(console.error)
     }, [baseUrl, songsUrl])
@@ -32,7 +45,7 @@ function SongTable({ baseUrl }) {
         () => {
             const object = songlist.map((song) => {
                 return {
-                    name: song.name,
+                    name: <Link to={`/song/${song.id}/`}> {song.name} </Link>,
                     key: song.key,
                     bpm: song.bpm,
                     status: song.status,
@@ -46,7 +59,6 @@ function SongTable({ baseUrl }) {
     );
 
     //** memoizes column data, uses accessor as the key for data, and gives access to each header object */
-
     const columns = useMemo(
         () => [
             {
@@ -94,31 +106,32 @@ function SongTable({ baseUrl }) {
         )
     }
     return (
-        <>
-            <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
-                <thead>
+        <TableContainer>
+            <MaUTable {...getTableProps()}>
+                <TableHead>
                     {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <TableRow {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                                <TableCell {...column.getHeaderProps()}>{column.render("Header")}</TableCell>
                             ))}
-                        </tr>
+                        </TableRow>
                     ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
+                </TableHead>
+                <TableBody {...getTableBodyProps()}>
                     {rows.map((row) => {
                         prepareRow(row);
                         return (
-                            <tr {...row.getRowProps()}>
+                            <TableRow {...row.getRowProps()}>
                                 {row.cells.map((cell) => {
-                                    return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                                    return <TableCell {...cell.getCellProps()}>{cell.render("Cell")}</TableCell>;
                                 })}
-                            </tr>
+                            </TableRow>
                         );
                     })}
-                </tbody>
-            </table>
-        </>
+                </TableBody>
+
+            </MaUTable>
+        </TableContainer>
     );
 }
 

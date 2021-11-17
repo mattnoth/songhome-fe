@@ -82,7 +82,7 @@ const Createsong = ({ baseUrl }) => {
 		setLoading(true)
 
 		Axios.post(url, fd, config).then((response) => {
-			console.log(response)
+
 			setLoading(false)
 			let newId = response.data.id
 

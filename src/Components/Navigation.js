@@ -11,7 +11,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Box } from '@mui/system'
-
 import {
 	Grid,
 	Music,
@@ -21,11 +20,9 @@ import {
 import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
 import { NavLink } from 'react-router-dom'
-import { makeStyles } from '@material-ui/styles';
 
 const Navigation = ({ useStyles }) => {
 	const classes = useStyles
-
 
 	const [state, setState] = useState({
 		top: false,
