@@ -62,7 +62,6 @@ const Edit = ({ baseUrl, match, history }) => {
 		history.goBack()
 	}
 
-
 	//** @returns user input into state */
 	const handleEditChange = (e) => {
 		setEditFormState({ ...editFormState, [e.target.id]: e.target.value })

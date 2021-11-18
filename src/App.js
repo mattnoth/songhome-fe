@@ -72,7 +72,9 @@ const theme = createTheme({
 
 //** All accessible route paths and top level of rendered components  */
 function App() {
+
 	const baseUrl = `https://blooming-earth-00957.herokuapp.com/`
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Route
