@@ -15,13 +15,13 @@ import Button from '@material-ui/core/Button'
 import Box from '@mui/material/Box';
 import Paper from '@material-ui/core/Paper'
 
-import { blueGrey } from '@material-ui/core/colors'
-import { grey100 } from 'material-ui/styles/colors'
+import { blueGrey } from '@mui/material/colors'
+import { grey } from '@mui/material/colors'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
 	root: {
-		backgroundColor: grey100,
+		backgroundColor: grey[100],
 
 	},
 	header: {

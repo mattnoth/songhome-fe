@@ -5,7 +5,7 @@ import Dropzone from './Dropzone'
 import { useHistory } from 'react-router'
 
 import Container from '@material-ui/core/Container'
-import CircularProgress from 'material-ui/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@material-ui/core/TextField'
 import { Typography } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
