@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-// provides basic MUI theme
+// provides basic MUI theme .. todo, elaborate on and or consolidate? 
 const theme = createTheme({
 	palette: {
 		primary: {
